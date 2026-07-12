@@ -1,17 +1,26 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-
+import { getFirestore } from "firebase/firestore";
 
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCcJCKWAeEpxL6UfXMc-LBosFxA_vb4bdk",
-  authDomain: "fir-db-project-2baa1.firebaseapp.com",
-  projectId: "fir-db-project-2baa1",
-  storageBucket: "fir-db-project-2baa1.firebasestorage.app",
-  messagingSenderId: "139155023005",
-  appId: "1:139155023005:web:253fdd8acb101bfea8a074"
+
+  apiKey: "AIzaSyCqlWssvGR_xtKhloCmsg_vCjNwWhVZc-E",
+
+  authDomain: "new-firebase-db-project.firebaseapp.com",
+
+  projectId: "new-firebase-db-project",
+
+  storageBucket: "new-firebase-db-project.firebasestorage.app",
+
+  messagingSenderId: "849297922385",
+
+  appId: "1:849297922385:web:7be5aa8a46167c553d1b70"
+
 };
+
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db = getFirestore(app);
