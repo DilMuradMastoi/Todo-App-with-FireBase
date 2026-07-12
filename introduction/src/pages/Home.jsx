@@ -1,59 +1,59 @@
+
 import { onAuthStateChanged } from 'firebase/auth';
-import { log } from 'firebase/firestore/pipelines';
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router';
 import { auth } from '../config/firebaseconfig';
+import { useNavigate } from 'react-router';
 
 const Home = () => {
-  const [title , setTitle ] = useState('');
-  const [desc , setDesc ] = useState('');
-  const [userUid , setUserUid] = useState('');
+  const [title , setTitle] = useState('');
+  const [desc , setDesc] = useState('');
 
-      const navigate = useNavigate()
-      useEffect( () => {
-        onAuthStateChanged(auth, (user) => {
+  const navigate = useNavigate()
+      useEffect(() => {
+          onAuthStateChanged(auth, (user) => {
   if (user) {
+ 
     const uid = user.uid;
-    setUserUid(uid)
-    // console.log('user uiid =>' , uid);
+    // console.log('user Uid =>' , uid);
     
-    // https://firebase.google.com/docs/reference/js/auth.user
-
     // ...
   } else {
       navigate('/login')
-    // ...
+    
   }
 });
       } , [])
 
+
   const addTodo = (event) => {
-    event.prevntDefault() ;
+    event.preventDefault();
     console.log(title , desc);
     
   }
   return (
-   <>
-   <h1>home {import.meta.env.VITE_PASSWORD} </h1>
-   <form >
-    <input type="text" placeholder='enter title' value={title}  onChange={(e) => setTitle(e.target.value)} /> <br /><br />
-   <textarea placeholder='enter description' value={desc}  onChange={(e) => setDesc(e.target.value)} ></textarea>  <br /><br />
-   <button>Add Todo</button>
-   </form>
+    <>
+    <h1>Home </h1>
+    <form onSubmit={addTodo} >
+    <input type="text" placeholder='enter todo' /> <br /><br /><br />
+      <textarea placeholder='enter Description'></textarea> <br /><br /><br />
+     <button>Add Todo</button>
+
+    </form>
+
    <div className="parent">
-    <div className="children"
-    style={{
+    <div className="children" style={{
       margin: '10px 0px',
-      padding: '10px' ,
-      border: '1px solid black' ,
-      borderRadius: '14px',
-    }}
-    >
-      <h2>title: lorem , ipsum</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis obcaecati ad culpa.</p>
+      padding: '10px',
+      border: '2px solid black',
+      borderRadius: '12px'
+    }}> 
+      <h2>title: Lorem ipsum dolor sit amet.</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, quasi itaque exercitationem placeat ratione incidunt voluptates temporibus saepe laudantium vel.</p>
     </div>
    </div>
-   </>
+
+
+    </>
   )
 }
 
