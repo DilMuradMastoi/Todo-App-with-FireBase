@@ -3,8 +3,6 @@ import React, { useState } from 'react'
 import { auth, db } from '../config/firebaseconfig'
 import { collection, addDoc, Timestamp } from "firebase/firestore"; 
 
-
-
 const Register = () => {
 
     const [fullname , setFullname] = useState('')
@@ -15,7 +13,6 @@ const Register = () => {
 
     const registerUser = async (event) => {
         event.preventDefault()
-        // console.log(email , password);
 
         try { 
           const userCredential = await 
@@ -24,17 +21,10 @@ const Register = () => {
       email,
       password
     );
-    // Signed up 
+
     const user = userCredential.user;
    console.log( 'Auth user' , user);
-   
 
-  // .catch((error) => {
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  //   alert('error Occured')
-  // });
-  //       try {
   const docRef = await addDoc(collection(db, "users"), {
      uid: user.uid , 
      fullname: fullname ,

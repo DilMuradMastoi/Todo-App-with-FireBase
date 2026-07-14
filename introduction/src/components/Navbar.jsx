@@ -12,7 +12,7 @@ const Navbar = () => {
       signOut(auth).then(() => {
         navigate('/login')
 }).catch((error) => {
-  // An error happened.
+
 });
     }
   return (
